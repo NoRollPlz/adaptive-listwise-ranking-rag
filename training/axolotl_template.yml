@@ -1,0 +1,55 @@
+﻿# This is a reconstruction-oriented Axolotl template.
+# It is NOT the exact training config used in the paper.
+
+base_model: /path/to/base/model
+model_type: AutoModelForCausalLM
+tokenizer_type: AutoTokenizer
+
+load_in_8bit: false
+load_in_4bit: true
+strict: false
+
+chat_template: chatml
+
+datasets:
+  - path: /path/to/train.jsonl
+    type: completion
+    field: text
+
+val_set_size: 0.01
+output_dir: /path/to/output/checkpoints
+
+dataset_prepared_path: last_run_prepared
+sequence_len: 4096
+sample_packing: false
+pad_to_sequence_len: true
+
+adapter: qlora
+lora_r: 64
+lora_alpha: 16
+lora_dropout: 0.05
+lora_target_linear: true
+
+gradient_accumulation_steps: 4
+micro_batch_size: 2
+num_epochs: 3
+optimizer: paged_adamw_8bit
+lr_scheduler: cosine
+learning_rate: 2e-5
+train_on_inputs: false
+group_by_length: false
+bf16: true
+fp16: false
+
+gradient_checkpointing: true
+early_stopping_patience:
+weight_decay: 0.0
+special_tokens:
+  pad_token: <|endoftext|>
+
+logging_steps: 10
+warmup_ratio: 0.03
+save_strategy: steps
+save_steps: 500
+eval_steps: 500
+eval_strategy: steps
