@@ -1,0 +1,10 @@
+﻿torch>=2.7.0
+vllm>=0.10.1
+transformers>=4.56.0
+numpy>=1.26.0
+nltk>=3.9.0
+rouge-score>=0.1.2
+tqdm>=4.66.0
+
+# Optional: only needed when using --mauve in evaluation/local/eval.py
+mauve-text>=0.4.0

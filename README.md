@@ -31,6 +31,8 @@ rather than on a single monolithic adaptive-RAG framework.
 ```text
 ijcnn2026/
 ├── config_paths.py
+├── requirements.txt
+├── environment.yml
 ├── generation/
 │   ├── vanilla/run_vanilla.py
 │   ├── choose/run_choose.py
@@ -75,6 +77,26 @@ ijcnn2026/
   Describes the expected structure of reconstructed training data for the choose-stage ranking model.
 - `training/axolotl_template.yml`
   A reconstruction-oriented Axolotl template config. This is not claimed to be the exact training config used in the paper.
+
+## Environment Setup
+
+This repository provides both:
+- `requirements.txt` for a pip-based installation
+- `environment.yml` for a minimal Conda environment
+
+### Option 1: Conda
+```bash
+conda env create -f environment.yml
+conda activate ijcnn2026
+```
+
+### Option 2: Pip
+```bash
+pip install -r requirements.txt
+```
+
+### Optional dependency
+The package `mauve-text` is only needed if you plan to use `--mauve` in `evaluation/local/eval.py`.
 
 ## Dataset-Specific Differences
 

@@ -1,0 +1,18 @@
+﻿name: ijcnn2026
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - pytorch>=2.7
+  - numpy>=1.26
+  - nltk>=3.9
+  - tqdm>=4.66
+  - pip:
+      - vllm>=0.10.1
+      - transformers>=4.56.0
+      - rouge-score>=0.1.2
+      - mauve-text>=0.4.0
